@@ -69,7 +69,7 @@ h1,.brand,.caption b,.sheet h2,.page h2{text-shadow:0 0 9px rgba(200,175,255,.28
 .orb{display:block;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#fff,rgb(var(--c)) 42%,rgba(var(--c),.34) 78%);box-shadow:0 0 10px rgba(var(--c),.42);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
 .dk:hover,.dk:focus-visible{color:var(--ink)}
 .dk:hover .orb,.dk:focus-visible .orb{transform:translateY(-5px) scale(1.42);box-shadow:0 0 16px rgba(var(--c),.95),0 0 38px 8px rgba(var(--c),.5)}
-@media(max-width:640px){.dock{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 6px}.dk{width:auto;font-size:13px;gap:5px}.orb{width:22px;height:22px}.tagline{margin-left:0}}
+@media(max-width:640px){.pillar{gap:4px;padding:8px 6px;border-radius:13px}.pillar .num{width:22px;height:22px;font-size:11px;border-width:1.5px}.pillar b{font-size:12px}.pillar span{font-size:10px;line-height:1.25}.dock{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 6px}.dk{width:auto;font-size:13px;gap:5px}.orb{width:22px;height:22px}.tagline{margin-left:0}}
 .em{animation:emerge 1s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*90ms + .2s)}
 @keyframes emerge{from{opacity:0;transform:scale(.9);filter:blur(9px)}}
 
@@ -253,7 +253,7 @@ function buildOrbit(){const F=$('field');F.textContent='';orbit.cards=[];
     orbit.cards.push(c)});
   sizeOrbit()}
 function sizeOrbit(){const W=innerWidth,narrow=W<=640,top=($('page')&&document.querySelector('header').getBoundingClientRect().bottom)+8,bottom=$('cap').getBoundingClientRect().top-10,A=Math.max(200,bottom-top);
-  const sunW=Math.min(W*(narrow?.36:.24),A*.38),cw=Math.min(W*(narrow?.3:.15),A*.3,230);
+  const sunW=Math.min(W*(narrow?.36:.24),A*(narrow?.3:.38)),cw=Math.min(W*(narrow?.25:.15),A*(narrow?.24:.3),230);
   orbit.box={W,top,bottom:top+A,A,narrow,sunW,cw,ch:cw/1.25};
   orbit.sun.el.style.width=sunW+'px';orbit.cards.forEach(c=>c.el.style.width=cw+'px')}
 function tickOrbit(now,dt){const B=orbit.box;if(!B)return;orbit.t+=dt;const speed=REDUCED?0:(B.narrow?.03:.06);orbit.rot+=speed*dt;
