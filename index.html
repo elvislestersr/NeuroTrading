@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NeuroTrading™ | Elvis Lester</title>
+<meta name="description" content="NeuroTrading™: trading psychology for traders who know their rules and still break them. By Elvis Lester, MA, LMHC, The ChangeMaster™.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://neurotrading.com/">
+<meta property="og:title" content="NeuroTrading™ | Elvis Lester">
+<meta property="og:description" content="Most traders don't lose to the market. They lose to their own brain.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap">
+<style>
+:root{color-scheme:dark;--ground:#000;--ground2:#12101f;--ink:#f6f2ff;--dim:#c2b9de;--line:rgba(255,255,255,.2);--gold:#e8c35a;--goldfill:#d4af37;--indigo:#6366f1;--purple:#8b5cf6;--cardink:#1d1640;
+--font:Nunito,"Helvetica Neue",Helvetica,Arial,sans-serif;--display:Comfortaa,Nunito,"Helvetica Neue",Arial,sans-serif;
+--gl:max(16px,env(safe-area-inset-left,0px));--gr:max(16px,env(safe-area-inset-right,0px))}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--ground);color:var(--ink);font:600 15px/1.55 var(--font)}
+a{color:inherit}button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+[hidden]{display:none!important}
+sup{font-size:.5em;line-height:0;vertical-align:.7em;font-weight:600}
+
+/* night sky */
+#nebula{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+#nebula i{position:absolute;display:block;border-radius:50%;animation:neb 70s ease-in-out infinite alternate}
+#nebula i:nth-child(1){left:10%;top:-6%;width:80%;height:104%;background:radial-gradient(closest-side,rgba(88,60,200,.36),rgba(60,40,140,.14) 60%,transparent);animation-duration:83s}
+#nebula i:nth-child(2){left:-24%;top:-28%;width:70%;height:90%;background:radial-gradient(closest-side,rgba(99,102,241,.28),transparent);animation-duration:61s;animation-delay:-20s}
+#nebula i:nth-child(3){right:-22%;bottom:-30%;width:76%;height:96%;background:radial-gradient(closest-side,rgba(139,92,246,.26),transparent);animation-duration:97s;animation-delay:-45s}
+#nebula i:nth-child(4){left:30%;bottom:-40%;width:50%;height:70%;background:radial-gradient(closest-side,rgba(212,175,55,.12),transparent);animation-duration:73s;animation-delay:-10s}
+@keyframes neb{from{transform:translate(-5%,-4%) scale(.92);opacity:.7}to{transform:translate(6%,5%) scale(1.14);opacity:1}}
+#sparks{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+
+/* header */
+header{position:fixed;z-index:20;top:0;left:0;right:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 24px;padding:calc(env(safe-area-inset-top,0px) + 12px) var(--gr) 12px var(--gl);background:linear-gradient(#000 60%,rgba(0,0,0,0))}
+.brandbox{margin-right:auto;min-width:0}
+.brand{font-family:var(--display);font-size:19px;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand svg{width:30px;height:30px}.brand .n{color:var(--gold)}
+.tagline{color:var(--dim);font-size:13.5px;font-weight:600;margin:1px 0 0 40px}
+nav.main{display:flex;gap:6px 20px;flex-wrap:wrap;align-items:center}
+nav.main a{text-decoration:none;color:var(--dim);padding:3px 0;border-bottom:1px solid transparent;white-space:nowrap}
+nav.main a:hover{color:var(--ink)}nav.main a.on{color:var(--gold);border-color:var(--gold)}
+h1,.brand,.caption b,.sheet h2,.page h2{text-shadow:0 0 9px rgba(200,175,255,.28)}
+
+/* home: the orbit */
+#field{position:fixed;inset:0;z-index:4;pointer-events:none}
+.fc{position:absolute;left:0;top:0;will-change:transform,opacity;pointer-events:auto;text-decoration:none;transform-origin:center}
+.sun svg{display:block;width:100%;height:auto;filter:drop-shadow(0 0 18px rgba(212,175,55,.25))}
+.pillar{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;aspect-ratio:1.25;border-radius:18px;padding:14px;text-align:center;
+ background:linear-gradient(160deg,rgba(30,26,60,.92),rgba(12,10,26,.92));border:1px solid rgba(232,195,90,.45);box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 22px rgba(99,102,241,.18)}
+.pillar .num{width:34px;height:34px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-family:var(--display);font-weight:700;font-size:15px}
+.pillar b{font-family:var(--display);font-weight:700;font-size:clamp(14px,1.35vw,18px);line-height:1.2;color:#fff}
+.pillar span{font-size:12px;color:var(--dim)}
+.fc:hover .pillar{border-color:var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 28px rgba(232,195,90,.35)}
+.caption{position:fixed;z-index:15;left:0;right:0;bottom:max(10px,env(safe-area-inset-bottom,0px));padding-inline:var(--gl) var(--gr);text-align:center;pointer-events:none}
+.caption small{display:block;color:var(--gold);font-size:14px;font-weight:800;letter-spacing:.02em}
+.caption b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(19px,2.1vw,26px);line-height:1.25;margin:2px auto 12px;max-width:900px}
+.dock{display:flex;justify-content:center;gap:clamp(14px,3vw,44px);pointer-events:auto}
+.dk{display:flex;flex-direction:column;align-items:center;gap:7px;text-decoration:none;color:var(--dim);font-size:14px;font-weight:700;width:clamp(88px,9vw,124px);line-height:1.2;transition:color .3s}
+.orb{display:block;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#fff,rgb(var(--c)) 42%,rgba(var(--c),.34) 78%);box-shadow:0 0 10px rgba(var(--c),.42);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.dk:hover,.dk:focus-visible{color:var(--ink)}
+.dk:hover .orb,.dk:focus-visible .orb{transform:translateY(-5px) scale(1.42);box-shadow:0 0 16px rgba(var(--c),.95),0 0 38px 8px rgba(var(--c),.5)}
+@media(max-width:640px){.dock{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 6px}.dk{width:auto;font-size:13px;gap:5px}.orb{width:22px;height:22px}.tagline{margin-left:0}}
+.em{animation:emerge 1s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*90ms + .2s)}
+@keyframes emerge{from{opacity:0;transform:scale(.9);filter:blur(9px)}}
+
+/* pillar sheet */
+#sheet{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.9);display:grid;place-items:center;padding:20px var(--gr) 20px var(--gl);overflow:auto;animation:fade .3s}
+@keyframes fade{from{opacity:0}}
+.sheet{max-width:560px;background:linear-gradient(160deg,#1a1636,#0c0a1a);border:1px solid rgba(232,195,90,.5);border-radius:18px;padding:28px 30px;animation:rise .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes rise{from{transform:scale(.88);opacity:.2;filter:blur(5px)}}
+.sheet small{color:var(--gold);font-weight:800}.sheet h2{font-family:var(--display);font-size:28px;font-weight:700;line-height:1.15;margin:4px 0 12px}
+.sheet p{color:var(--dim);margin:0 0 12px;font-size:16px}.sheet p.big{color:#fff;font-size:18px}
+.sheet .row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;padding:11px 22px;border-radius:999px;background:var(--goldfill);color:var(--cardink);text-decoration:none;font-weight:800}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--ink)}.btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+#closer{color:var(--dim);font-size:14px}#closer:hover{color:var(--gold)}
+
+/* plain pages */
+#page{position:relative;z-index:6;padding:calc(env(safe-area-inset-top,0px) + 96px) var(--gr) 40px var(--gl)}
+body.home #page{display:none}body:not(.home) #field,body:not(.home) .caption{display:none}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-family:var(--display);font-size:clamp(28px,4.4vw,44px);font-weight:700;line-height:1.12;margin:0 0 10px}
+h1 .g{color:var(--gold)}
+.lead{color:var(--dim);max-width:62ch;margin:0 0 28px;font-size:17px}
+.page h2{font-family:var(--display);font-size:22px;font-weight:700;margin:40px 0 14px}
+.parts{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.part{display:block;text-decoration:none;padding:20px 22px;border-radius:14px;background:linear-gradient(160deg,rgba(28,24,56,.88),rgba(12,10,26,.88));border:1px solid var(--line);transition:transform .25s,border-color .25s}
+.part:hover{transform:translateY(-4px);border-color:var(--gold)}
+.part small{display:block;color:var(--gold);font-weight:800;font-size:13px;letter-spacing:.04em}
+.part b{display:block;font-family:var(--display);font-weight:700;font-size:19px;line-height:1.25;margin:6px 0 8px;color:#fff}
+.part span{display:block;color:var(--dim);font-size:14.5px}
+.part em{display:block;margin-top:12px;color:var(--gold);font-style:normal;font-size:13.5px}
+.part.next{border-style:dashed;opacity:.85}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.box{padding:20px 22px;border-radius:14px;background:rgba(18,16,36,.85);border:1px solid var(--line)}
+.box h3{margin:0 0 6px;color:var(--gold);font-size:16px;font-weight:800}.box p{margin:0;color:var(--dim);font-size:15px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.steps li{counter-increment:s;display:flex;gap:16px;align-items:flex-start;padding:16px 18px;border-radius:12px;background:rgba(18,16,36,.85);border:1px solid var(--line)}
+.steps li::before{content:counter(s);flex:0 0 34px;height:34px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-family:var(--display);font-weight:700}
+.steps b{display:block;color:#fff}.steps span{color:var(--dim);font-size:15px}
+.cta{margin-top:34px;padding:28px 30px;border-radius:18px;background:linear-gradient(135deg,rgba(212,175,55,.16),rgba(99,102,241,.14));border:1px solid rgba(232,195,90,.5);text-align:center}
+.cta h2{margin:0 0 8px!important}.cta p{color:var(--dim);margin:0 auto 18px;max-width:58ch}
+.note{color:var(--dim);font-size:13.5px;margin-top:14px}
+.about{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:44px;align-items:start}
+.headshot{border-radius:50%;overflow:hidden;aspect-ratio:1;box-shadow:0 0 0 2px rgba(232,195,90,.6),0 0 50px rgba(139,92,246,.35)}
+.headshot img{display:block;width:100%;height:100%;object-fit:cover;object-position:55% 30%}
+.about p{color:var(--dim);font-size:16px;margin:0 0 14px;max-width:62ch}
+.roles{color:var(--gold)!important;font-weight:800}
+.creds{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.creds li{padding:5px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--dim)}
+.links{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:20px}.links a{color:var(--gold)}
+@media(max-width:720px){.cols{grid-template-columns:1fr}.about{grid-template-columns:1fr;gap:24px}.headshot{max-width:220px}}
+footer{position:relative;z-index:6;padding:26px var(--gr) calc(26px + env(safe-area-inset-bottom,0px)) var(--gl);border-top:1px solid var(--line);color:var(--dim);font-size:12.5px}
+footer p{max-width:1080px;margin:0 auto 8px}
+body.home footer{display:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="home">
+<header>
+  <div class="brandbox">
+    <a class="brand" href="#home" id="brand"></a>
+    <div class="tagline">Trading psychology by Elvis Lester, The ChangeMaster™</div>
+  </div>
+  <nav class="main" aria-label="Main">
+    <a href="#home" data-v="home">Home</a>
+    <a href="#series" data-v="series">The Series</a>
+    <a href="#coaching" data-v="coaching">Coaching</a>
+    <a href="#about" data-v="about">About</a>
+  </nav>
+</header>
+<div id="nebula" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<canvas id="sparks" aria-hidden="true"></canvas>
+<div id="field"></div>
+<nav class="caption" id="cap" aria-label="Explore"></nav>
+<main id="page"></main>
+<footer>
+  <p>NeuroTrading™ is for education and performance coaching only. Nothing on this site is investment, financial, tax or legal advice, or a recommendation to buy, sell or hold any security. Elvis Lester, MA, LMHC, is a licensed mental health counselor and clinical hypnotherapist, not a registered broker-dealer, investment adviser or financial planner. Trading involves substantial risk of loss. Coaching is not psychotherapy and does not create a counselor-client relationship. If you are struggling with compulsive trading or gambling, please reach out to a licensed professional.</p>
+  <p>© 2026 Elvis Lester / Neurocise Studios. All rights reserved. NeuroTrading™, ChangeMaster™, ARC™ and NeuroPrecision™ are trademarks of Elvis Lester. Neurocise® is a registered trademark.</p>
+</footer>
+<div id="sheet" hidden role="dialog" aria-modal="true"></div>
+
+<script>
+/* ---------- links: fill in as they become available ---------- */
+const LINKS={
+  newsletter:'',                                   // NeuroTrading Newsletter page on LinkedIn
+  group:'https://www.linkedin.com/groups/42845200/', // NeuroTrading LinkedIn group
+  linkedin:'',                                     // Elvis's LinkedIn profile (for "Message me")
+  book:'',                                         // booking page for discovery calls, when ready
+  substack:'https://eklsr.substack.com/',
+  studios:'https://elvislester.com/'
+};
+const PARTS=[
+  {tag:'Part 1',title:'The Trade Is Over. Your Brain Doesn\'t Know It.',blurb:'Why you hold the loser and dump the winner, and the missing off-switch behind both.',url:'https://www.linkedin.com/pulse/neurotrading-trade-over-your-brain-doesnt-know-elvis-lester-w66fe/'},
+  {tag:'Research',title:'Every Market. Every Continent. The Same Losing Trader.',blurb:'What the research on millions of traders says, and why the problem was never the market.',url:''},
+  {tag:'Part 2',title:'You\'re Not Watching the Market. You\'re Checking the Stove.',blurb:'Why every look at the screen makes the next one more likely, and a 7-day experiment to break the loop.',url:''},
+  {tag:'Part 3',title:'Same Setup. Different State. Different Trade.',blurb:'Monday he followed the plan. Thursday he abandoned it. The setup didn\'t change. The trader did.',url:''},
+  {tag:'Bonus',title:'Read It. Resolve It. Release It.',blurb:'Tired or revenge? Usually both. How to handle a mixed state before the open.',url:''},
+  {tag:'Part 4',title:'The High After the Win',blurb:'Why the trade after your best day can be more dangerous than the trade after your worst.',url:''},
+  {tag:'Coming next',title:'Part 5: Break the Loop Before It Places the Trade',blurb:'Pattern interrupts: catch the hinge one breath earlier, one degree cleaner.',url:'',next:true}
+];
+const PILLARS=[
+  {name:'Pattern Interrupts',short:'Break the loop',lead:'Every losing loop turns on a hinge: the instant you lean toward the old route.',body:['The hand drifting to move the stop. The itch to re-enter right after a loss. The urge to close a winner just to stop watching it.','You can\'t out-think a loop that\'s already running. NeuroTrading™ catches it at the hinge, one breath earlier, one degree cleaner, and breaks it before it places the trade.']},
+  {name:'State Control',short:'Read your state',lead:'State control starts with reading your state.',body:['Tired. Revenge. Euphoric. Often two at once. A mixed state is harder to catch, because together they can feel like determination.','Read it. Resolve it. Release it. Then trade, from Zero Balance: Clean. Clear. Confident.']},
+  {name:'Strategy Elicitation',short:'Find your recipe',lead:'Your best trades have a recipe.',body:['On the days you trade well, you run a specific sequence, whether you know it or not. On the days you don\'t, you run a different one.','Strategy elicitation finds both, compares them, and streamlines the one that works, so you can run it on purpose.']},
+  {name:'Desired State Outcome',short:'Set it before the bell',lead:'Know the state you trade from as clearly as the levels you trade at.',body:['Set the exact state you want, how strong you want it, and the order you step into it, before the open.','Set and sequenced to the degree, so Wednesday\'s loss doesn\'t trade Thursday\'s account.']}
+];
+const $=id=>document.getElementById(id),E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const REDUCED=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const C={gold:'212,175,55',purple:'139,92,246',indigo:'99,102,241',lav:'196,181,253'};
+
+/* the NeuroTrading mark */
+function mark(){return `<svg viewBox="0 0 120 120" role="img" aria-label="NeuroTrading"><polygon points="60,5 107.6,32.5 107.6,87.5 60,115 12.4,87.5 12.4,32.5" fill="none" stroke="#D4AF37" stroke-width="2.2"/><polygon points="60,13 100.7,36.5 100.7,83.5 60,107 19.3,83.5 19.3,36.5" fill="none" stroke="#D4AF37" stroke-opacity=".35" stroke-width="1"/><line x1="38" y1="29" x2="38" y2="93" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round"/><rect x="32.5" y="40" width="11" height="44" rx="1.5" fill="#D4AF37"/><line x1="82" y1="27" x2="82" y2="91" stroke="#8B5CF6" stroke-width="2.5" stroke-linecap="round"/><rect x="76.5" y="36" width="11" height="44" rx="1.5" fill="#8B5CF6"/><line x1="60" y1="60" x2="51" y2="73" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round"/><line x1="60" y1="60" x2="69" y2="47" stroke="#6366F1" stroke-width="1.8" stroke-linecap="round"/><circle cx="51" cy="73" r="2.6" fill="#6366F1"/><circle cx="69" cy="47" r="2.6" fill="#6366F1"/><line x1="38" y1="42" x2="82" y2="78" stroke="#6366F1" stroke-width="6" stroke-linecap="round"/><circle cx="38" cy="42" r="5.5" fill="#6366F1" stroke="#000" stroke-width="2"/><circle cx="82" cy="78" r="5.5" fill="#6366F1" stroke="#000" stroke-width="2"/><circle cx="60" cy="60" r="5" fill="#D4AF37" stroke="#000" stroke-width="2"/></svg>`}
+$('brand').innerHTML=mark()+'<span><span class="n">Neuro</span>Trading<sup>™</sup></span>';
+
+/* ---------- neural sparks: impulses arc across an unseen network ---------- */
+const sp={list:[],next:0,ctx:null,w:0,h:0},net={nodes:[]};
+function sizeSparks(){const d=Math.min(devicePixelRatio||1,2),cv=$('sparks');sp.w=innerWidth;sp.h=innerHeight;cv.width=sp.w*d;cv.height=sp.h*d;sp.ctx=cv.getContext('2d');sp.ctx.setTransform(d,0,0,d,0,0);buildNet()}
+function buildNet(){const W=sp.w,H=sp.h,cols=Math.max(5,Math.round(W*1.4/180)),rows=Math.max(5,Math.round(H*1.4/165)),N=[],r=Math.random;
+  for(let y=0;y<rows;y++)for(let x=0;x<cols;x++)N.push({x:-W*.2+(x+.5+(r()-.5)*.7)/cols*W*1.4,y:-H*.2+(y+.5+(r()-.5)*.7)/rows*H*1.4,links:[]});
+  N.forEach((A,i)=>N.map((B,j)=>[Math.hypot(A.x-B.x,A.y-B.y),j]).filter(q=>q[1]!==i).sort((p,q)=>p[0]-q[0]).slice(0,5).forEach(q=>{if(!A.links.includes(q[1]))A.links.push(q[1]);if(!N[q[1]].links.includes(i))N[q[1]].links.push(i)}));net.nodes=N}
+function smooth(pts){const out=[],p=i=>pts[Math.max(0,Math.min(pts.length-1,i))];for(let i=0;i<pts.length-1;i++){const a=p(i-1),b=p(i),c=p(i+1),d=p(i+2);for(let k=0;k<12;k++){const t=k/12,t2=t*t,t3=t2*t;out.push({x:.5*(2*b.x+(c.x-a.x)*t+(2*a.x-5*b.x+4*c.x-d.x)*t2+(3*b.x-a.x-3*c.x+d.x)*t3),y:.5*(2*b.y+(c.y-a.y)*t+(2*a.y-5*b.y+4*c.y-d.y)*t2+(3*b.y-a.y-3*c.y+d.y)*t3)})}}out.push(pts[pts.length-1]);return out}
+function walk(s,an,len){const N=net.nodes,ch=[N[s]],seen=new Set([s]);let i=s;const turn=(Math.random()<.5?-1:1)*(.22+Math.random()*.3);
+  for(let k=0;k<len;k++){an+=turn;let best=-1,bs=-9;N[i].links.forEach(j=>{if(seen.has(j))return;const q=Math.cos(Math.atan2(N[j].y-N[i].y,N[j].x-N[i].x)-an)+Math.random()*.15;if(q>bs){bs=q;best=j}});if(best<0||bs<.1)break;seen.add(best);ch.push(N[best]);i=best}return ch}
+function fire(now,s,dir,delay,c){const ch=walk(s,dir,4+Math.floor(Math.random()*4));if(ch.length<3)return;const P=smooth(ch);let L=0;for(let i=1;i<P.length;i++)L+=Math.hypot(P[i].x-P[i-1].x,P[i].y-P[i-1].y);
+  const dr=Math.random(),d=dr<.4?.42:dr<.78?.7:1,speed=(150+Math.random()*90)*(.65+.35*d);sp.list.push({t0:now+delay,dur:L*1.4/speed*1000,P,c,d})}
+function spawn(now){const N=net.nodes,W=sp.w,H=sp.h,r=Math.random;if(!N.length)return;sp.zone=((sp.zone||0)+1)%4;const Z=sp.zone;
+  const pool=N.map((n,i)=>[n,i]).filter(([n])=>Z===0?(n.y<H*.3&&n.y>-H*.12):Z===1?(n.y>H*.68&&n.y<H*1.12):Z===2?(n.x<W*.25&&n.x>-W*.12):(n.x>W*.75&&n.x<W*1.12));if(!pool.length)return;
+  const s=pool[Math.floor(r()*pool.length)][1],o=N[s],dir=Math.atan2(H/2-o.y,W/2-o.x)+(r()-.5)*1.5,pal=[C.gold,C.purple,C.indigo,C.lav],pick=()=>pal[Math.floor(r()*pal.length)];
+  fire(now,s,dir,0,pick());if(r()<.5)fire(now,s,dir+(r()<.5?-1:1)*(.7+r()*.6),350+r()*700,pick())}
+function glow(g,P,a,b,c,d,al){if(b-a<1)return;g.beginPath();g.moveTo(P[a].x,P[a].y);for(let i=a+1;i<=b;i++)g.lineTo(P[i].x,P[i].y);[[16*d,.075],[7*d,.18],[2.2*d,.85]].forEach(([w,x])=>{g.lineWidth=w;g.strokeStyle=`rgba(${c},${x*al})`;g.stroke()})}
+function dot(g,x,y,R,c,al){const gl=g.createRadialGradient(x,y,0,x,y,R);gl.addColorStop(0,`rgba(${c},${al})`);gl.addColorStop(.4,`rgba(${c},${al*.35})`);gl.addColorStop(1,`rgba(${c},0)`);g.fillStyle=gl;g.beginPath();g.arc(x,y,R,0,6.283);g.fill()}
+function drawSparks(now){const g=sp.ctx;if(!g)return;g.globalCompositeOperation='source-over';g.clearRect(0,0,sp.w,sp.h);if(REDUCED)return;g.globalCompositeOperation='lighter';
+  if(now>sp.next){spawn(now);sp.next=now+1500+Math.random()*1700}
+  sp.list=sp.list.filter(s=>now-s.t0<s.dur);g.lineCap='round';g.lineJoin='round';
+  sp.list.forEach(s=>{const p=(now-s.t0)/s.dur;if(p<=0)return;const n=s.P.length-1,depth=.4+.6*s.d,head=Math.min(n,Math.ceil(p*1.4*n)),tail=Math.max(0,head-Math.round(Math.min(n*.42,70))),rest=Math.max(0,(p*1.4-1)/.4),al=(1-rest)*depth*(document.body.classList.contains('home')?1:.55),K=7;
+    for(let k=0;k<K;k++){const a=tail+Math.floor((head-tail)*k/K),b=tail+Math.floor((head-tail)*(k+1)/K);glow(g,s.P,a,b,s.c,s.d,al*Math.pow((k+1)/K,1.6))}
+    const H=s.P[head];dot(g,H.x,H.y,18*s.d+8,s.c,.85*al)})}
+
+/* ---------- home: the four pillars orbit the mark ---------- */
+const orbit={cards:[],rot:0,t:0};
+const ease=t=>t*t*(3-2*t);
+function buildOrbit(){const F=$('field');F.textContent='';orbit.cards=[];
+  const sun=document.createElement('a');sun.className='fc sun';sun.href='#series';sun.setAttribute('aria-label','NeuroTrading: read the series');sun.innerHTML=mark();F.append(sun);
+  orbit.sun={el:sun,born:performance.now()};
+  PILLARS.forEach((p,i)=>{const el=document.createElement('button');el.className='fc';el.setAttribute('aria-label',p.name);
+    el.innerHTML=`<span class="pillar"><span class="num">${i+1}</span><b>${E(p.name)}</b><span>${E(p.short)}</span></span>`;
+    el.onclick=()=>openSheet(i);F.append(el);
+    const c={el,base:i/PILLARS.length*6.2832+.35,off:0,hover:0,born:performance.now()+(REDUCED?0:300+i*140)};
+    el.onpointerenter=()=>c.over=true;el.onpointerleave=()=>c.over=false;el.onfocus=()=>c.over=true;el.onblur=()=>c.over=false;
+    orbit.cards.push(c)});
+  sizeOrbit()}
+function sizeOrbit(){const W=innerWidth,narrow=W<=640,top=($('page')&&document.querySelector('header').getBoundingClientRect().bottom)+8,bottom=$('cap').getBoundingClientRect().top-10,A=Math.max(200,bottom-top);
+  const sunW=Math.min(W*(narrow?.42:.24),A*.42),cw=Math.min(W*(narrow?.3:.15),A*.3,230);
+  orbit.box={W,top,bottom:top+A,A,narrow,sunW,cw,ch:cw/1.25};
+  orbit.sun.el.style.width=sunW+'px';orbit.cards.forEach(c=>c.el.style.width=cw+'px')}
+function tickOrbit(now,dt){const B=orbit.box;if(!B)return;orbit.t+=dt;const speed=REDUCED?0:(B.narrow?.03:.06);orbit.rot+=speed*dt;
+  const cx=B.W/2,cy=B.top+B.A/2,S0=.74,S1=1.06,RY=Math.max(10,(B.A-B.ch*S1)/2-6),RX=Math.min(B.W/2-B.cw*S1/2-8,B.W*(B.narrow?.33:.36)),anyOver=orbit.cards.some(c=>c.over);
+  const s=orbit.sun,se=ease(Math.min(1,Math.max(0,(now-s.born)/1300))),ss=(1+(REDUCED?0:Math.sin(orbit.t*.5)*.015))*(.85+.15*se),sw=B.sunW;
+  s.el.style.opacity=se;s.el.style.zIndex=60;s.el.style.transform=`translate(${(cx-sw/2).toFixed(1)}px,${(cy-sw/2).toFixed(1)}px) scale(${ss.toFixed(3)})`;
+  orbit.cards.forEach(c=>{c.hover+=((c.over?1:0)-c.hover)*Math.min(1,dt*4);if(c.over)c.off-=speed*dt;else if(c.off){c.off=Math.atan2(Math.sin(c.off),Math.cos(c.off));const st=.1*dt;c.off=Math.abs(c.off)<=st?0:c.off-Math.sign(c.off)*st}
+    const th=c.base+orbit.rot+c.off,z=Math.cos(th),front=(z+1)/2,e=ease(front),en=ease(Math.min(1,Math.max(0,(now-c.born)/1200)));
+    const sc=((B.narrow?.92:S0+(S1-S0)*e)+.14*c.hover)*(.8+.2*en),x=cx+Math.sin(th)*RX,y=cy+z*RY,o=((B.narrow?1:.62+.38*e)*(anyOver&&!c.over?.7:1)+c.hover*.3)*en;
+    c.el.style.opacity=Math.min(1,o).toFixed(3);c.el.style.zIndex=c.over?300:(z>-.1?100+Math.round(e*100):10+Math.round(e*40));
+    c.el.style.transform=`translate(${(x-B.cw/2).toFixed(1)}px,${(y-B.ch/2).toFixed(1)}px) scale(${sc.toFixed(3)})`})}
+let last=0;function tick(now){requestAnimationFrame(tick);const dt=Math.min(.05,(now-(last||now))/1000);last=now;if(document.body.classList.contains('home'))tickOrbit(now,dt);drawSparks(now)}
+
+/* ---------- pillar sheet ---------- */
+function openSheet(i){const p=PILLARS[i],S=$('sheet');
+  S.innerHTML=`<div class="sheet"><small>Pillar ${i+1} of 4</small><h2>${E(p.name)}</h2><p class="big">${E(p.lead)}</p>${p.body.map(t=>`<p>${E(t)}</p>`).join('')}<div class="row"><a class="btn" href="#series">Read the series</a><a class="btn ghost" href="#coaching">Work with Elvis</a><button id="closer">Close</button></div></div>`;
+  S.hidden=false;$('closer').focus();$('closer').onclick=closeSheet;S.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeSheet))}
+function closeSheet(){$('sheet').hidden=true}
+$('sheet').addEventListener('click',e=>{if(e.target===$('sheet'))closeSheet()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+
+/* ---------- views ---------- */
+const ext=(u,label)=>u?`<a class="btn" href="${E(u)}" target="_blank" rel="noopener">${label}</a>`:`<span class="btn ghost" aria-disabled="true">${label} (link to come)</span>`;
+function showHome(){
+  const dock=[['The Series','#series',C.gold,false],['Coaching','#coaching',C.purple,false],['Newsletter',LINKS.newsletter||'#series',C.indigo,!!LINKS.newsletter],['LinkedIn Group',LINKS.group,C.lav,true],['About Elvis','#about','232,195,90',false]];
+  $('cap').innerHTML=`<small class="em" style="--i:1">NeuroTrading™ · Elvis Lester, MA, LMHC, The ChangeMaster™</small><b class="em" style="--i:3">Most traders don't lose to the market. They lose to their own brain.</b><div class="dock">${dock.map(([n,u,c,x],i)=>`<a class="dk em" href="${E(u)}"${x?' target="_blank" rel="noopener"':''} style="--i:${i+5};--c:${c}"><span class="orb"></span>${n}</a>`).join('')}</div>`;
+  buildOrbit()}
+function showSeries(){
+  $('page').innerHTML=`<div class="wrap page"><h1 class="em">The NeuroTrading™ <span class="g">Series</span></h1><p class="lead em" style="--i:1">You know your rules. You've read the books. And you still move the stop. Each part takes one piece of the problem, shows you the research behind it, and gives you something to try at your desk the next day.</p>
+  <div class="parts">${PARTS.map((p,i)=>{const tagO=p.url?'a':'div';return `<${tagO} class="part em${p.next?' next':''}" style="--i:${i+2}"${p.url?` href="${E(p.url)}" target="_blank" rel="noopener"`:''}><small>${E(p.tag)}</small><b>${E(p.title)}</b><span>${E(p.blurb)}</span><em>${p.next?'Coming soon':p.url?'Read on LinkedIn →':'In the NeuroTrading Newsletter'}</em></${tagO}>`}).join('')}</div>
+  <div class="cta em" style="--i:10"><h2>Get every part as it comes out</h2><p>New parts go out once a week in the NeuroTrading Newsletter on LinkedIn, along with bonus pieces and answers to readers' questions.</p>${ext(LINKS.newsletter,'Subscribe on LinkedIn')} &nbsp; ${ext(LINKS.group,'Join the LinkedIn group')}</div></div>`}
+function showCoaching(){
+  $('page').innerHTML=`<div class="wrap page"><h1 class="em">Work with Elvis, <span class="g">one to one</span></h1><p class="lead em" style="--i:1">For traders who know their rules and still break them. I work with a small number of traders at a time, on the state, the loops and the decisions underneath the trade.</p>
+  <h2 class="em" style="--i:2">What we work on</h2><div class="cols">${PILLARS.slice(0,3).map((p,i)=>`<div class="box em" style="--i:${i+3}"><h3>${E(p.name)}</h3><p>${E(p.lead)}</p></div>`).join('')}</div>
+  <div class="box em" style="--i:6;margin-top:18px"><h3>${E(PILLARS[3].name)}</h3><p>${E(PILLARS[3].lead)} ${E(PILLARS[3].body[0])}</p></div>
+  <h2 class="em" style="--i:7">How it works</h2><ol class="steps">
+  <li class="em" style="--i:8"><div><b>A discovery call</b><span>Twenty minutes to talk through what's costing you money and whether this is the right fit.</span></div></li>
+  <li class="em" style="--i:9"><div><b>A baseline</b><span>Before we change anything, we measure: rule breaks, stops honored versus moved, trades per day, and your state before each entry.</span></div></li>
+  <li class="em" style="--i:10"><div><b>The work</b><span>Weekly one-to-one sessions on the four pillars, using NLP, clinical hypnosis and Neurocise®, with tools you run at your desk between sessions.</span></div></li>
+  <li class="em" style="--i:11"><div><b>The proof</b><span>We compare your numbers before and after. If they don't move, we change the approach.</span></div></li></ol>
+  <div class="cta em" style="--i:12"><h2>Recognize yourself?</h2><p>Message me the word <b style="color:var(--gold)">NeuroTrading</b> on LinkedIn, and we'll set up a call.</p>${ext(LINKS.book,'Book a discovery call')} &nbsp; ${ext(LINKS.linkedin,'Message me on LinkedIn')}<p class="note">NeuroTrading™ coaching is performance coaching, not psychotherapy, and never advice on what to buy or sell.</p></div>
+  <h2 class="em" style="--i:13">For clinicians and coaches</h2><div class="box em" style="--i:14"><p>Some of your clients trade, and some of what they bring you starts at the trading desk. I also train clinicians and coaches in the NeuroTrading™ approach. Message me on LinkedIn to ask about training.</p></div></div>`}
+function showAbout(){
+  $('page').innerHTML=`<div class="wrap page"><div class="about"><div class="headshot em"><img src="about/elvis.jpg" alt="Elvis Lester"></div><div class="em" style="--i:2"><h1>Elvis Lester, <span class="g">MA, LMHC</span></h1>
+  <p class="roles">The ChangeMaster™ | TranceMaster™ | The Psygienist™</p>
+  <p>For nearly 40 years, I've worked with people who knew exactly what to do and didn't do it. Traders are no different. They know the rule. They can say it out loud. And when the moment comes, something else runs instead.</p>
+  <p>I'm a licensed mental health counselor, clinical hypnotherapist and trainer, the first-ever Licensed Master Trainer of NLP in Hypnosis™ and a Licensed NLP Change Master™, designated by Dr. Richard Bandler and the Society of NLP. I created Neurocise®, EyePointing™, NeuroPointing™ and Psynergetics™, and I've presented at the Florida Mental Health Counselors Association for 13 years.</p>
+  <p>NeuroTrading™ brings that work to the trading desk: the gap between what traders know and what they actually do under pressure.</p>
+  <ul class="creds"><li>Licensed Mental Health Counselor (FL)</li><li>Qualified Teacher of Hypnosis</li><li>Qualified Supervisor (FL)</li><li>Advanced Master Trainer</li><li>Licensed NLP Change Master™</li></ul>
+  <div class="links"><a href="${E(LINKS.studios)}" target="_blank" rel="noopener">Explore the Elvis Lester Universe</a><a href="${E(LINKS.substack)}" target="_blank" rel="noopener">Substack</a><a href="${E(LINKS.group)}" target="_blank" rel="noopener">NeuroTrading LinkedIn group</a></div></div></div></div>`}
+function route(){const h=location.hash.slice(1)||'home',v=['home','series','coaching','about'].includes(h)?h:'home';closeSheet();
+  document.body.classList.toggle('home',v==='home');document.querySelectorAll('nav.main a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
+  if(v==='home')showHome();else{$('field').textContent='';({series:showSeries,coaching:showCoaching,about:showAbout})[v]()}
+  sizeSparks();sp.list=[];sp.next=performance.now()+600;scrollTo(0,0)}
+addEventListener('hashchange',route);
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{sizeSparks();if(document.body.classList.contains('home'))sizeOrbit()},200)});
+route();requestAnimationFrame(tick);
+</script>
+</body>
+</html>
