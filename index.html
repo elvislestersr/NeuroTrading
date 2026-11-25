@@ -107,6 +107,7 @@ a.tool:hover{border-color:var(--gold)}.tool b{display:block;color:#fff}.tool spa
 .sheet ul.reads a,.sheet ul.reads span{display:block;padding:10px 14px;border-radius:10px;border:1px solid var(--line);text-decoration:none;color:#fff;font-size:15px}
 .sheet ul.reads a:hover{border-color:var(--gold)}.sheet ul.reads small{display:block;color:var(--gold);font-size:12px}
 .cols5{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.cols5 .wide{grid-column:1/-1;border-color:rgba(232,195,90,.5)}
 .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .box{padding:20px 22px;border-radius:14px;background:rgba(18,16,36,.85);border:1px solid var(--line)}
 .box h3{margin:0 0 6px;color:var(--gold);font-size:16px;font-weight:800}.box p{margin:0;color:var(--dim);font-size:15px}
@@ -152,7 +153,7 @@ body.home footer{display:none}
 <main id="page"></main>
 <footer>
   <p>NeuroTrading™ is for education and performance coaching only. Nothing on this site is investment, financial, tax or legal advice, or a recommendation to buy, sell or hold any security. Elvis Lester, MA, LMHC, is a licensed mental health counselor and clinical hypnotherapist, not a registered broker-dealer, investment adviser or financial planner. Trading involves substantial risk of loss. Coaching is not psychotherapy and does not create a counselor-client relationship. If you are struggling with compulsive trading or gambling, please reach out to a licensed professional.</p>
-  <p>© 2026 Elvis Lester / Neurocise Studios. All rights reserved. NeuroTrading™, ChangeMaster™, ARC™ and NeuroPrecision™ are trademarks of Elvis Lester. Neurocise® is a registered trademark.</p>
+  <p>© 2026 Elvis Lester / Neurocise Studios. All rights reserved. NeuroTrading™, Evolved Trading™, ChangeMaster™, ARC™ and NeuroPrecision™ are trademarks of Elvis Lester. Neurocise® is a registered trademark.</p>
 </footer>
 <div id="sheet" hidden role="dialog" aria-modal="true"></div>
 
@@ -191,11 +192,11 @@ const TOOLS=[
   {name:'Mini-Trances',what:'Short audio to set your state before the bell.',soon:true}
 ];
 const PILLARS=[
-  {id:'identity',name:'Trader Identity',short:'Who shows up',lead:'You can\'t control the market. You can control who shows up to trade it.',body:['The gambler. The hero. The one who has to be right. The one who has to get it back. Each of them trades the same chart differently.','NeuroTrading™ works on the trader before the trade, so the plan belongs to someone who will actually follow it.'],soon:'Coming in a future part'},
   {id:'interrupts',name:'Pattern Interrupts',short:'Break the loop',lead:'Every losing loop turns on a hinge: the instant you lean toward the old route.',body:['The hand drifting to move the stop. The itch to re-enter right after a loss. The urge to close a winner just to stop watching it.','You can\'t out-think a loop that\'s already running. NeuroTrading™ catches it at the hinge, one breath earlier, one degree cleaner, and breaks it before it places the trade.']},
   {id:'state',name:'State Control',short:'Read. Resolve. Release.',lead:'State control starts with reading your state.',body:['Tired. Revenge. Euphoric. Often two at once. A mixed state is harder to catch, because together they can feel like determination.','Read it. Resolve it. Release it. Then trade, from Zero Balance: Clean. Clear. Confident.']},
   {id:'strategy',name:'Strategy Elicitation',short:'Find your recipe',lead:'Your best trades have a recipe.',body:['On the days you trade well, you run a specific sequence, whether you know it or not. On the days you don\'t, you run a different one.','Strategy elicitation finds both, compares them, and streamlines the one that works, so you can run it on purpose.'],soon:'Coming in Part 6'},
-  {id:'outcome',name:'Desired State Outcome',short:'Set it before the bell',lead:'Know the state you trade from as clearly as the levels you trade at.',body:['Set the exact state you want, how strong you want it, and the order you step into it, before the open.','Set and sequenced to the degree, so Wednesday\'s loss doesn\'t trade Thursday\'s account.']}
+  {id:'outcome',name:'Desired State Outcome',short:'Set it before the bell',lead:'Know the state you trade from as clearly as the levels you trade at.',body:['Set the exact state you want, how strong you want it, and the order you step into it, before the open.','Set and sequenced to the degree, so Wednesday\'s loss doesn\'t trade Thursday\'s account.']},
+  {id:'identity',name:'Trader Identity',short:'Evolved Trading™',lead:'You can\'t control the market. You can control who shows up to trade it.',body:['Your identity as a trader is never finished. Every trade teaches you something, and what you keep from it becomes part of who sits down at the desk next time.','NeuroTrading™ turns those lessons into wisdom, and wisdom into identity-points: the markers your brain uses for "this is who I am when I trade." That\'s Evolved Trading™.'],coach:'Your identity as a trader is always evolving. Every trade you make teaches something. The lessons you keep become wisdom, and your brain sets that wisdom down as identity-points: the markers for "this is who I am when I trade." We make that process deliberate, so each session builds the trader you want to be instead of the one your last loss left behind. That\'s Evolved Trading™: not just better trades, a better trader.',soon:'Coming in a future part'}
 ];
 const PIL=id=>PILLARS.find(p=>p.id===id)||{name:''},SIT=id=>(SITUATIONS.find(x=>x.id===id)||{name:''}).name;
 const $=id=>document.getElementById(id),E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -295,7 +296,7 @@ function showSeries(f){
   <div class="cta em" style="--i:10"><h2>Get every part as it comes out</h2><p>New parts go out once a week in the NeuroTrading Newsletter on LinkedIn, along with bonus pieces and answers to readers' questions.</p>${ext(LINKS.newsletter,'Subscribe on LinkedIn')} &nbsp; ${ext(LINKS.group,'Join the LinkedIn group')}</div></div>`}
 function showCoaching(){
   $('page').innerHTML=`<div class="wrap page"><h1 class="em">Work with Elvis, <span class="g">one to one</span></h1><p class="lead em" style="--i:1">For traders who know their rules and still break them. I work with a small number of traders at a time, on the state, the loops and the decisions underneath the trade.</p>
-  <h2 class="em" style="--i:2">What we work on</h2><div class="cols5">${PILLARS.map((p,i)=>`<div class="box em" style="--i:${i+3}"><h3>${E(p.name)}</h3><p>${E(p.lead)}</p></div>`).join('')}</div>
+  <h2 class="em" style="--i:2">What we work on</h2><div class="cols5">${PILLARS.map((p,i)=>p.coach?`<div class="box em wide" style="--i:${i+3}"><h3>${i+1}. ${E(p.name)}: <span style="color:#fff">Evolved Trading™</span></h3><p>${E(p.coach)}</p></div>`:`<div class="box em" style="--i:${i+3}"><h3>${i+1}. ${E(p.name)}</h3><p>${E(p.lead)}</p></div>`).join('')}</div>
   <h2 class="em" style="--i:7">How it works</h2><ol class="steps">
   <li class="em" style="--i:8"><div><b>A discovery call</b><span>Twenty minutes to talk through what's costing you money and whether this is the right fit.</span></div></li>
   <li class="em" style="--i:9"><div><b>A baseline</b><span>Before we change anything, we measure: rule breaks, stops honored versus moved, trades per day, and your state before each entry.</span></div></li>
