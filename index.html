@@ -262,9 +262,11 @@ function sizeOrbit(){const W=innerWidth,H=innerHeight,narrow=W<=640,short=!narro
   const sunW=short?Math.min(A*.62,W*.13):Math.min(W*(narrow?.36:.24),A*(narrow?.3:.38)),cw=short?Math.min(W*.135,150):Math.min(W*(narrow?.25:.15),A*(narrow?.24:.3),230);
   orbit.sun.el.style.width=sunW+'px';orbit.cards.forEach(c=>c.el.style.width=cw+'px');
   const ch=Math.max(cw/1.25,...orbit.cards.map(c=>c.el.offsetHeight||0));
-  orbit.box={W,top,bottom:top+A,A,narrow,short,sunW,cw,ch}}
+  let sw=sunW;if(short){const room=A-2*ch-8;sw=room>=56?Math.min(sunW,room):0;orbit.sun.el.style.width=Math.max(sw,1)+'px'}
+  orbit.sun.el.style.display=sw?'':'none';
+  orbit.box={W,top,bottom:top+A,A,narrow,short,sunW:sw,cw,ch}}
 function tickOrbit(now,dt){const B=orbit.box;if(!B)return;orbit.t+=dt;const speed=REDUCED?0:(B.narrow?.03:.06);orbit.rot+=speed*dt;
-  const cx=B.W/2,cy=B.top+B.A/2,S0=.74,S1=1.06,RY=Math.max(10,(B.A-B.ch*S1)/2-6),RX=Math.min(B.W/2-B.cw*S1/2-8,B.W*(B.narrow?.33:.36)),anyOver=orbit.cards.some(c=>c.over);
+  const cx=B.W/2,cy=B.top+B.A/2,S0=.74,S1=1.06,RY=Math.max(10,(B.A-B.ch*(B.short?1:S1))/2-(B.short?2:6)),RX=Math.min(B.W/2-B.cw*S1/2-8,B.W*(B.narrow?.33:.36)),anyOver=orbit.cards.some(c=>c.over);
   const s=orbit.sun,se=ease(Math.min(1,Math.max(0,(now-s.born)/1300))),ss=(1+(REDUCED?0:Math.sin(orbit.t*.5)*.015))*(.85+.15*se),sw=B.sunW;
   s.el.style.opacity=se;s.el.style.zIndex=60;s.el.style.transform=`translate(${(cx-sw/2).toFixed(1)}px,${(cy-sw/2).toFixed(1)}px) scale(${ss.toFixed(3)})`;
   orbit.cards.forEach(c=>{c.hover+=((c.over?1:0)-c.hover)*Math.min(1,dt*4);if(c.over)c.off-=speed*dt;else if(c.off){c.off=Math.atan2(Math.sin(c.off),Math.cos(c.off));const st=.1*dt;c.off=Math.abs(c.off)<=st?0:c.off-Math.sign(c.off)*st}
