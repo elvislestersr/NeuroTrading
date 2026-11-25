@@ -70,6 +70,11 @@ h1,.brand,.caption b,.sheet h2,.page h2{text-shadow:0 0 9px rgba(200,175,255,.28
 .orb{display:block;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#fff,rgb(var(--c)) 42%,rgba(var(--c),.34) 78%);box-shadow:0 0 10px rgba(var(--c),.42);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
 .dk:hover,.dk:focus-visible{color:var(--ink)}
 .dk:hover .orb,.dk:focus-visible .orb{transform:translateY(-5px) scale(1.42);box-shadow:0 0 16px rgba(var(--c),.95),0 0 38px 8px rgba(var(--c),.5)}
+body.short header{padding-top:calc(env(safe-area-inset-top,0px) + 6px);padding-bottom:4px}
+body.short .brand{font-size:16px}body.short .brand svg{width:24px;height:24px}body.short .tagline{font-size:11.5px;margin-left:34px}
+body.short .pillar{gap:3px;padding:7px 6px;border-radius:12px;aspect-ratio:auto}body.short .pillar .dot{width:7px;height:7px}body.short .pillar b{font-size:12px}body.short .pillar span{font-size:10px;line-height:1.2}
+body.short .caption small{font-size:11.5px}body.short .caption b{font-size:16px;margin:0 auto 6px}
+body.short .dk{font-size:11.5px;gap:3px;width:auto;flex-direction:row}body.short .orb{width:16px;height:16px}body.short .dock{gap:18px}
 @media(max-width:640px){.pillar{gap:4px;padding:8px 6px;border-radius:13px}.pillar .dot{width:8px;height:8px}.pillar b{font-size:12px}.pillar span{font-size:10px;line-height:1.25}.dock{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 6px}.dk{width:auto;font-size:13px;gap:5px}.orb{width:22px;height:22px}.tagline{margin-left:0}}
 .em{animation:emerge 1s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*90ms + .2s)}
 @keyframes emerge{from{opacity:0;transform:scale(.9);filter:blur(9px)}}
@@ -253,17 +258,18 @@ function buildOrbit(){const F=$('field');F.textContent='';orbit.cards=[];
     el.onpointerenter=()=>c.over=true;el.onpointerleave=()=>c.over=false;el.onfocus=()=>c.over=true;el.onblur=()=>c.over=false;
     orbit.cards.push(c)});
   sizeOrbit()}
-function sizeOrbit(){const W=innerWidth,narrow=W<=640,top=($('page')&&document.querySelector('header').getBoundingClientRect().bottom)+8,bottom=$('cap').getBoundingClientRect().top-10,A=Math.max(200,bottom-top);
-  const sunW=Math.min(W*(narrow?.36:.24),A*(narrow?.3:.38)),cw=Math.min(W*(narrow?.25:.15),A*(narrow?.24:.3),230);
-  orbit.box={W,top,bottom:top+A,A,narrow,sunW,cw,ch:cw/1.25};
-  orbit.sun.el.style.width=sunW+'px';orbit.cards.forEach(c=>c.el.style.width=cw+'px')}
+function sizeOrbit(){const W=innerWidth,H=innerHeight,narrow=W<=640,short=!narrow&&H<=520;document.body.classList.toggle('short',short);const top=document.querySelector('header').getBoundingClientRect().bottom+(short?2:8),bottom=$('cap').getBoundingClientRect().top-(short?4:10),A=Math.max(short?120:200,bottom-top);
+  const sunW=short?Math.min(A*.62,W*.13):Math.min(W*(narrow?.36:.24),A*(narrow?.3:.38)),cw=short?Math.min(W*.135,150):Math.min(W*(narrow?.25:.15),A*(narrow?.24:.3),230);
+  orbit.sun.el.style.width=sunW+'px';orbit.cards.forEach(c=>c.el.style.width=cw+'px');
+  const ch=Math.max(cw/1.25,...orbit.cards.map(c=>c.el.offsetHeight||0));
+  orbit.box={W,top,bottom:top+A,A,narrow,short,sunW,cw,ch}}
 function tickOrbit(now,dt){const B=orbit.box;if(!B)return;orbit.t+=dt;const speed=REDUCED?0:(B.narrow?.03:.06);orbit.rot+=speed*dt;
   const cx=B.W/2,cy=B.top+B.A/2,S0=.74,S1=1.06,RY=Math.max(10,(B.A-B.ch*S1)/2-6),RX=Math.min(B.W/2-B.cw*S1/2-8,B.W*(B.narrow?.33:.36)),anyOver=orbit.cards.some(c=>c.over);
   const s=orbit.sun,se=ease(Math.min(1,Math.max(0,(now-s.born)/1300))),ss=(1+(REDUCED?0:Math.sin(orbit.t*.5)*.015))*(.85+.15*se),sw=B.sunW;
   s.el.style.opacity=se;s.el.style.zIndex=60;s.el.style.transform=`translate(${(cx-sw/2).toFixed(1)}px,${(cy-sw/2).toFixed(1)}px) scale(${ss.toFixed(3)})`;
   orbit.cards.forEach(c=>{c.hover+=((c.over?1:0)-c.hover)*Math.min(1,dt*4);if(c.over)c.off-=speed*dt;else if(c.off){c.off=Math.atan2(Math.sin(c.off),Math.cos(c.off));const st=.1*dt;c.off=Math.abs(c.off)<=st?0:c.off-Math.sign(c.off)*st}
     const th=c.base+orbit.rot+c.off,z=Math.cos(th),front=(z+1)/2,e=ease(front),en=ease(Math.min(1,Math.max(0,(now-c.born)/1200)));
-    const sc=((B.narrow?.92:S0+(S1-S0)*e)+.14*c.hover)*(.8+.2*en),x=cx-Math.sin(th)*RX,y=cy+z*RY,o=((B.narrow?1:.62+.38*e)*(anyOver&&!c.over?.7:1)+c.hover*.3)*en;
+    const sc=((B.narrow?.92:B.short?.9+.1*e:S0+(S1-S0)*e)+.14*c.hover)*(.8+.2*en),x=cx-Math.sin(th)*RX,y=cy+z*RY,o=((B.narrow?1:.62+.38*e)*(anyOver&&!c.over?.7:1)+c.hover*.3)*en;
     c.el.style.opacity=Math.min(1,o).toFixed(3);c.el.style.zIndex=c.over?300:(z>-.1?100+Math.round(e*100):10+Math.round(e*40));
     c.el.style.transform=`translate(${(x-B.cw/2).toFixed(1)}px,${(y-B.ch/2).toFixed(1)}px) scale(${sc.toFixed(3)})`})}
 let last=0;function tick(now){requestAnimationFrame(tick);const dt=Math.min(.05,(now-(last||now))/1000);last=now;if(document.body.classList.contains('home'))tickOrbit(now,dt);drawSparks(now)}
