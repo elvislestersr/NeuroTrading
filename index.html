@@ -140,6 +140,7 @@ a.tool:hover{border-color:var(--gold)}.tool b{display:block;color:#fff}.tool spa
 .roles{color:var(--gold)!important;font-weight:800}
 .creds{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:8px}
 .creds li{padding:5px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--dim)}
+.legal{max-width:820px}.legal h2{font-size:19px!important;margin:30px 0 8px!important;color:var(--gold)}.legal p,.legal li{color:var(--dim);font-size:15.5px;margin:0 0 10px}.legal ul{padding-left:20px;margin:0 0 10px}.legal b{color:#fff}
 .links{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:20px}.links a{color:var(--gold)}
 @media(max-width:720px){.cols{grid-template-columns:1fr}.about{grid-template-columns:1fr;gap:24px}.headshot{max-width:220px}}
 footer{position:relative;z-index:6;padding:26px var(--gr) calc(26px + env(safe-area-inset-bottom,0px)) var(--gl);border-top:1px solid var(--line);color:var(--dim);font-size:12.5px}
@@ -169,6 +170,7 @@ body.home footer{display:none}
 <footer>
   <p>NeuroTrading™ is for education and performance coaching only. Nothing on this site is investment, financial, tax or legal advice, or a recommendation to buy, sell or hold any security. Elvis Lester, MA, LMHC, is a licensed mental health counselor and clinical hypnotherapist, not a registered broker-dealer, investment adviser or financial planner. Trading involves substantial risk of loss. Coaching is not psychotherapy and does not create a counselor-client relationship. If you are struggling with compulsive trading or gambling, please reach out to a licensed professional.</p>
   <p>© 2026 Elvis Lester / Neurocise Studios. All rights reserved. NeuroTrading™, Evolved Trading™, ChangeMaster™, ARC™ and NeuroPrecision™ are trademarks of Elvis Lester. Neurocise® is a registered trademark.</p>
+  <p><a href="#legal" style="color:var(--gold)">Legal: full disclaimer, copyright &amp; privacy →</a></p>
 </footer>
 <div id="sheet" hidden role="dialog" aria-modal="true"></div>
 
@@ -332,9 +334,40 @@ function showAbout(){
   <p>NeuroTrading™ brings that work to the trading desk: the gap between what traders know and what they actually do under pressure.</p>
   <ul class="creds"><li>Licensed Mental Health Counselor (FL)</li><li>Qualified Teacher of Hypnosis</li><li>Qualified Supervisor (FL)</li><li>Advanced Master Trainer</li><li>Licensed NLP Change Master™</li></ul>
   <div class="links"><a href="${E(LINKS.studios)}" target="_blank" rel="noopener">Explore the Elvis Lester Universe</a><a href="${E(LINKS.substack)}" target="_blank" rel="noopener">Substack</a><a href="${E(LINKS.group)}" target="_blank" rel="noopener">NeuroTrading LinkedIn group</a></div></div></div></div>`}
-function route(){const [h0,f]=(location.hash.slice(1)||'home').split('/'),v=['home','series','coaching','about'].includes(h0)?h0:'home';closeSheet();
+function showLegal(){
+  $('page').innerHTML=`<div class="wrap page legal"><h1 class="em">Legal: <span class="g">disclaimer, copyright &amp; privacy</span></h1>
+  <p class="lead em" style="--i:1">Plain language, because you should know exactly what NeuroTrading™ is and what it isn't. Effective November 25, 2026.</p>
+  <div class="em" style="--i:2">
+  <h2>1. Education and coaching, not financial advice</h2>
+  <p>Everything on this site, in the NeuroTrading™ series and newsletter, in the groups, in Mini-Trances and in coaching is for <b>educational and performance-coaching purposes only</b>. Nothing here is investment, financial, tax, accounting or legal advice, and nothing is a recommendation to buy, sell or hold any security, currency, cryptocurrency, derivative or other financial product.</p>
+  <p>Elvis Lester, MA, LMHC, is a licensed mental health counselor and clinical hypnotherapist. He is <b>not</b> a registered broker-dealer, investment adviser, commodity trading advisor or financial planner, and he does not give advice on specific securities, trades, entries, exits or position sizes. No signals, no stock picks, ever.</p>
+  <p><b>Trading involves substantial risk of loss</b> and is not suitable for everyone. You can lose more than you invest in some products. Only trade with money you can afford to lose, and consult a qualified, licensed financial professional before making investment decisions. Every trading decision you make is yours alone.</p>
+  <h2>2. No guarantees</h2>
+  <p>Results vary. NeuroTrading™ works on state, patterns and decisions; it does not promise profits, a win rate or any specific outcome. Research cited in the series describes groups of people, not you. Trader stories in the articles are illustrative composites, not real clients or real accounts.</p>
+  <h2>3. Coaching is not therapy</h2>
+  <p>NeuroTrading™ coaching is performance coaching. It is <b>not psychotherapy, counseling or medical treatment</b>, and reading this site, joining a group, listening to a Mini-Trance or working with Elvis as a coach does not create a counselor-client or any other healthcare relationship. Coaching is not a substitute for mental health care.</p>
+  <p>If trading is causing you serious distress, or you think you may have a problem with compulsive trading or gambling, please reach out to a licensed professional. In the U.S., the National Problem Gambling Helpline is <b>1-800-GAMBLER</b>. If you are in crisis or thinking about harming yourself, call or text <b>988</b> (Suicide &amp; Crisis Lifeline), or call 911.</p>
+  <h2>4. Hypnosis and Mini-Trances</h2>
+  <ul><li>Never listen while driving, operating machinery, or doing anything that needs your full attention.</li>
+  <li><b>Never use a Mini-Trance while placing or managing trades.</b> They are for before or after a session.</li>
+  <li>Hypnosis is not advised for people with epilepsy or seizure disorders, psychosis, dissociative conditions, or other conditions where focused-attention techniques may not be appropriate, unless their doctor or treating clinician says it's okay.</li>
+  <li>Stop at any time if you feel uncomfortable. You stay in control throughout.</li></ul>
+  <h2>5. Copyright</h2>
+  <p>All content on this site, including articles, text, graphics, the NeuroTrading™ logo, audio and design, is © 2026 Elvis Lester / Neurocise Studios. All rights reserved. You may share links and quote brief passages with credit to Elvis Lester and a link back. Any other copying, reproduction, distribution, adaptation, recording, training of software or AI models, or commercial use requires written permission.</p>
+  <h2>6. Trademarks</h2>
+  <p>NeuroTrading™, Evolved Trading™, ChangeMaster™, TranceMaster™, The Psygienist™, ARC™, NeuroPrecision™, EyePointing™, NeuroPointing™, Psynergetics™, NowKnowing™ and Knowledge 2 Action™ are trademarks of Elvis Lester. <b>Neurocise®</b> is a registered trademark of Elvis Lester. Please don't use these names for your own programs, products or services. Other names and trademarks mentioned belong to their owners.</p>
+  <h2>7. Privacy</h2>
+  <p>This site does not ask for your name or email, does not use tracking cookies, and does not run advertising or analytics trackers. Like any website, it receives standard technical information (such as your IP address and browser type) through its hosting provider, Cloudflare, and its font provider, Google Fonts, so pages can be delivered and protected. If you call, text or message Elvis, what you share is used only to respond to you and is never sold. If the site later adds an email list or booking page, this section will be updated before it goes live.</p>
+  <h2>8. Links to other sites</h2>
+  <p>This site links to LinkedIn, Substack and other services. Their content and privacy practices are their own, and Elvis Lester is not responsible for them.</p>
+  <h2>9. General</h2>
+  <p>This site and these terms are governed by the laws of the State of Florida, USA. Use of the site is at your own risk; it is provided "as is." These terms may be updated from time to time; the date at the top shows the latest version.</p>
+  <h2>Questions</h2>
+  <p>Message Elvis on <a href="${E(LINKS.linkedin)}" target="_blank" rel="noopener" style="color:var(--gold)">LinkedIn</a>, or call or text <a href="tel:+18132215466" style="color:var(--gold)">813-221-5466</a>.</p>
+  </div></div>`}
+function route(){const [h0,f]=(location.hash.slice(1)||'home').split('/'),v=['home','series','coaching','about','legal'].includes(h0)?h0:'home';closeSheet();
   document.body.classList.toggle('home',v==='home');document.querySelectorAll('nav.main a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
-  if(v==='home')showHome();else{$('field').textContent='';({series:()=>showSeries(f),coaching:showCoaching,about:showAbout})[v]()}
+  if(v==='home')showHome();else{$('field').textContent='';({series:()=>showSeries(f),coaching:showCoaching,about:showAbout,legal:showLegal})[v]()}
   padTop();sizeSparks();sp.list=[];sp.next=performance.now()+600;scrollTo(0,0)}
 function padTop(){$('page').style.paddingTop=(document.querySelector('header').getBoundingClientRect().bottom+24)+'px'}
 addEventListener('hashchange',route);
