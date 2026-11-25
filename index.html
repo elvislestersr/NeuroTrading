@@ -6,7 +6,7 @@
 <title>NeuroTrading™ | Elvis Lester</title>
 <meta name="description" content="NeuroTrading™: trading psychology for traders who know their rules and still break them. By Elvis Lester, MA, LMHC, The ChangeMaster™.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://neurotrading.com/">
+<meta property="og:url" content="https://neurotrading.coach/">
 <meta property="og:title" content="NeuroTrading™ | Elvis Lester">
 <meta property="og:description" content="Most traders don't lose to the market. They lose to their own brain.">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -93,6 +93,20 @@ h1 .g{color:var(--gold)}
 .part span{display:block;color:var(--dim);font-size:14.5px}
 .part em{display:block;margin-top:12px;color:var(--gold);font-style:normal;font-size:13.5px}
 .part.next{border-style:dashed;opacity:.85}
+.part i{display:block;margin-top:10px;font-style:normal;font-size:12.5px;color:var(--dim);opacity:.85}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}.chips+.chips{margin-bottom:22px}
+.chips .lbl{color:var(--dim);font-size:13px;font-weight:800;align-self:center;margin-right:4px;min-width:74px}
+.chip{padding:6px 14px;border-radius:999px;border:1px solid var(--line);color:var(--dim);font-size:13.5px;text-decoration:none;white-space:nowrap}
+.chip:hover{border-color:var(--gold);color:var(--ink)}.chip.on{background:var(--goldfill);border-color:var(--goldfill);color:var(--cardink)}
+.empty{color:var(--dim);padding:18px 0}
+details.older{margin-top:18px}details.older summary{cursor:pointer;color:var(--gold);font-weight:800;margin-bottom:14px}
+.tools{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.tool{display:block;text-decoration:none;padding:16px 18px;border-radius:12px;background:rgba(18,16,36,.85);border:1px solid var(--line)}
+a.tool:hover{border-color:var(--gold)}.tool b{display:block;color:#fff}.tool span{display:block;color:var(--dim);font-size:14px;margin-top:4px}.tool em{display:block;margin-top:8px;color:var(--gold);font-style:normal;font-size:13px}
+.sheet ul.reads{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+.sheet ul.reads a,.sheet ul.reads span{display:block;padding:10px 14px;border-radius:10px;border:1px solid var(--line);text-decoration:none;color:#fff;font-size:15px}
+.sheet ul.reads a:hover{border-color:var(--gold)}.sheet ul.reads small{display:block;color:var(--gold);font-size:12px}
+.cols5{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
 .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .box{padding:20px 22px;border-radius:14px;background:rgba(18,16,36,.85);border:1px solid var(--line)}
 .box h3{margin:0 0 6px;color:var(--gold);font-size:16px;font-weight:800}.box p{margin:0;color:var(--dim);font-size:15px}
@@ -152,20 +166,38 @@ const LINKS={
   substack:'https://eklsr.substack.com/',
   studios:'https://elvislester.com/'
 };
+/* Each article: pillar = one of the PILLARS ids; sit = one or more SITUATIONS ids.
+   To add a new article, add one line here (newest at the bottom). */
 const PARTS=[
-  {tag:'Part 1',title:'The Trade Is Over. Your Brain Doesn\'t Know It.',blurb:'Why you hold the loser and dump the winner, and the missing off-switch behind both.',url:'https://www.linkedin.com/pulse/neurotrading-trade-over-your-brain-doesnt-know-elvis-lester-ry9ke'},
-  {tag:'Part 2',title:'Every Market. Every Continent. The Same Losing Trader.',blurb:'What the research on millions of traders says, and why the problem was never the market.',url:'https://www.linkedin.com/pulse/every-market-continent-same-losing-trader-elvis-lester-equhe'},
-  {tag:'Part 3',title:'Same Setup. Different State. Different Trade.',blurb:'Monday he followed the plan. Thursday he abandoned it. The setup didn\'t change. The trader did.',url:'https://www.linkedin.com/pulse/neurotrading-part-3-same-setup-different-state-trade-elvis-lester-tulqe'},
-  {tag:'Bonus',title:'Read It. Resolve It. Release It.',blurb:'Tired or revenge? Usually both. How to handle a mixed state before the open.',url:'https://www.linkedin.com/pulse/neurotrading-read-resolve-release-elvis-lester-igyoe'},
-  {tag:'Part 4',title:'The High After the Win',blurb:'Why the trade after your best day can be more dangerous than the trade after your worst.',url:''},
-  {tag:'Coming next',title:'Part 5: Break the Loop Before It Places the Trade',blurb:'Pattern interrupts: catch the hinge one breath earlier, one degree cleaner.',url:'',next:true}
+  {tag:'Part 1',title:'The Trade Is Over. Your Brain Doesn\'t Know It.',blurb:'Why you hold the loser and dump the winner, and the missing off-switch behind both.',url:'https://www.linkedin.com/pulse/neurotrading-trade-over-your-brain-doesnt-know-elvis-lester-ry9ke',pillar:'interrupts',sit:['mid','loss']},
+  {tag:'Part 2',title:'Every Market. Every Continent. The Same Losing Trader.',blurb:'What the research on millions of traders says, and why the problem was never the market.',url:'https://www.linkedin.com/pulse/every-market-continent-same-losing-trader-elvis-lester-equhe',pillar:'outcome',sit:['open']},
+  {tag:'Part 3',title:'Same Setup. Different State. Different Trade.',blurb:'Monday he followed the plan. Thursday he abandoned it. The setup didn\'t change. The trader did.',url:'https://www.linkedin.com/pulse/neurotrading-part-3-same-setup-different-state-trade-elvis-lester-tulqe',pillar:'state',sit:['open','loss']},
+  {tag:'Bonus',title:'Read It. Resolve It. Release It.',blurb:'Tired or revenge? Usually both. How to handle a mixed state before the open.',url:'https://www.linkedin.com/pulse/neurotrading-read-resolve-release-elvis-lester-igyoe',pillar:'state',sit:['open','loss']},
+  {tag:'Part 4',title:'The High After the Win',blurb:'Why the trade after your best day can be more dangerous than the trade after your worst.',url:'',pillar:'state',sit:['win']},
+  {tag:'Coming next',title:'Part 5: Break the Loop Before It Places the Trade',blurb:'Pattern interrupts: catch the hinge one breath earlier, one degree cleaner.',url:'',next:true,pillar:'interrupts',sit:['mid']}
+];
+const SITUATIONS=[
+  {id:'open',name:'Before the open'},
+  {id:'mid',name:'Mid-trade'},
+  {id:'loss',name:'After a loss'},
+  {id:'win',name:'After a big win'},
+  {id:'review',name:'End-of-day review'}
+];
+/* Tools: named techniques. part = the article tag it comes from (links automatically once that article has a link). */
+const TOOLS=[
+  {name:'Read. Resolve. Release.',what:'Catch a mixed state, like tired and revenge at once, and clear it before the open.',part:'Bonus'},
+  {name:'The 3-step state check',what:'Name it. Rate it. Apply your rule. Thirty seconds before every entry.',part:'Part 3'},
+  {name:'The "day after your best day" audit',what:'Treat a big win like a big loss, and check what it did to your next session.',part:'Part 4'},
+  {name:'Mini-Trances',what:'Short audio to set your state before the bell.',soon:true}
 ];
 const PILLARS=[
-  {name:'Pattern Interrupts',short:'Break the loop',lead:'Every losing loop turns on a hinge: the instant you lean toward the old route.',body:['The hand drifting to move the stop. The itch to re-enter right after a loss. The urge to close a winner just to stop watching it.','You can\'t out-think a loop that\'s already running. NeuroTrading™ catches it at the hinge, one breath earlier, one degree cleaner, and breaks it before it places the trade.']},
-  {name:'State Control',short:'Read your state',lead:'State control starts with reading your state.',body:['Tired. Revenge. Euphoric. Often two at once. A mixed state is harder to catch, because together they can feel like determination.','Read it. Resolve it. Release it. Then trade, from Zero Balance: Clean. Clear. Confident.']},
-  {name:'Strategy Elicitation',short:'Find your recipe',lead:'Your best trades have a recipe.',body:['On the days you trade well, you run a specific sequence, whether you know it or not. On the days you don\'t, you run a different one.','Strategy elicitation finds both, compares them, and streamlines the one that works, so you can run it on purpose.']},
-  {name:'Desired State Outcome',short:'Set it before the bell',lead:'Know the state you trade from as clearly as the levels you trade at.',body:['Set the exact state you want, how strong you want it, and the order you step into it, before the open.','Set and sequenced to the degree, so Wednesday\'s loss doesn\'t trade Thursday\'s account.']}
+  {id:'identity',name:'Trader Identity',short:'Who shows up',lead:'You can\'t control the market. You can control who shows up to trade it.',body:['The gambler. The hero. The one who has to be right. The one who has to get it back. Each of them trades the same chart differently.','NeuroTrading™ works on the trader before the trade, so the plan belongs to someone who will actually follow it.'],soon:'Coming in a future part'},
+  {id:'interrupts',name:'Pattern Interrupts',short:'Break the loop',lead:'Every losing loop turns on a hinge: the instant you lean toward the old route.',body:['The hand drifting to move the stop. The itch to re-enter right after a loss. The urge to close a winner just to stop watching it.','You can\'t out-think a loop that\'s already running. NeuroTrading™ catches it at the hinge, one breath earlier, one degree cleaner, and breaks it before it places the trade.']},
+  {id:'state',name:'State Control',short:'Read. Resolve. Release.',lead:'State control starts with reading your state.',body:['Tired. Revenge. Euphoric. Often two at once. A mixed state is harder to catch, because together they can feel like determination.','Read it. Resolve it. Release it. Then trade, from Zero Balance: Clean. Clear. Confident.']},
+  {id:'strategy',name:'Strategy Elicitation',short:'Find your recipe',lead:'Your best trades have a recipe.',body:['On the days you trade well, you run a specific sequence, whether you know it or not. On the days you don\'t, you run a different one.','Strategy elicitation finds both, compares them, and streamlines the one that works, so you can run it on purpose.'],soon:'Coming in Part 6'},
+  {id:'outcome',name:'Desired State Outcome',short:'Set it before the bell',lead:'Know the state you trade from as clearly as the levels you trade at.',body:['Set the exact state you want, how strong you want it, and the order you step into it, before the open.','Set and sequenced to the degree, so Wednesday\'s loss doesn\'t trade Thursday\'s account.']}
 ];
+const PIL=id=>PILLARS.find(p=>p.id===id)||{name:''},SIT=id=>(SITUATIONS.find(x=>x.id===id)||{name:''}).name;
 const $=id=>document.getElementById(id),E=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const REDUCED=matchMedia('(prefers-reduced-motion:reduce)').matches;
 const C={gold:'212,175,55',purple:'139,92,246',indigo:'99,102,241',lav:'196,181,253'};
@@ -198,7 +230,7 @@ function drawSparks(now){const g=sp.ctx;if(!g)return;g.globalCompositeOperation=
     for(let k=0;k<K;k++){const a=tail+Math.floor((head-tail)*k/K),b=tail+Math.floor((head-tail)*(k+1)/K);glow(g,s.P,a,b,s.c,s.d,al*Math.pow((k+1)/K,1.6))}
     const H=s.P[head];dot(g,H.x,H.y,18*s.d+8,s.c,.85*al)})}
 
-/* ---------- home: the four pillars orbit the mark ---------- */
+/* ---------- home: the five pillars orbit the mark ---------- */
 const orbit={cards:[],rot:0,t:0};
 const ease=t=>t*t*(3-2*t);
 function buildOrbit(){const F=$('field');F.textContent='';orbit.cards=[];
@@ -212,7 +244,7 @@ function buildOrbit(){const F=$('field');F.textContent='';orbit.cards=[];
     orbit.cards.push(c)});
   sizeOrbit()}
 function sizeOrbit(){const W=innerWidth,narrow=W<=640,top=($('page')&&document.querySelector('header').getBoundingClientRect().bottom)+8,bottom=$('cap').getBoundingClientRect().top-10,A=Math.max(200,bottom-top);
-  const sunW=Math.min(W*(narrow?.42:.24),A*.42),cw=Math.min(W*(narrow?.3:.15),A*.3,230);
+  const sunW=Math.min(W*(narrow?.36:.24),A*.38),cw=Math.min(W*(narrow?.3:.15),A*.3,230);
   orbit.box={W,top,bottom:top+A,A,narrow,sunW,cw,ch:cw/1.25};
   orbit.sun.el.style.width=sunW+'px';orbit.cards.forEach(c=>c.el.style.width=cw+'px')}
 function tickOrbit(now,dt){const B=orbit.box;if(!B)return;orbit.t+=dt;const speed=REDUCED?0:(B.narrow?.03:.06);orbit.rot+=speed*dt;
@@ -228,7 +260,10 @@ let last=0;function tick(now){requestAnimationFrame(tick);const dt=Math.min(.05,
 
 /* ---------- pillar sheet ---------- */
 function openSheet(i){const p=PILLARS[i],S=$('sheet');
-  S.innerHTML=`<div class="sheet"><small>Pillar ${i+1} of 4</small><h2>${E(p.name)}</h2><p class="big">${E(p.lead)}</p>${p.body.map(t=>`<p>${E(t)}</p>`).join('')}<div class="row"><a class="btn" href="#series">Read the series</a><a class="btn ghost" href="#coaching">Work with Elvis</a><button id="closer">Close</button></div></div>`;
+  const mine=PARTS.filter(a=>a.pillar===p.id&&(a.url||a.next)).reverse().slice(0,3);
+  const reads=mine.length?`<ul class="reads">${mine.map(a=>a.url?`<li><a href="${E(a.url)}" target="_blank" rel="noopener"><small>${E(a.tag)}</small>${E(a.title)} →</a></li>`:`<li><span><small>${E(a.tag)}</small>${E(a.title)}</span></li>`).join('')}</ul>`:`<p><b style="color:var(--gold)">${E(p.soon||'Coming soon')}.</b> Subscribe to the newsletter to get it when it's out.</p>`;
+  const more=PARTS.some(a=>a.pillar===p.id)?`<a class="btn" href="#series/${p.id}">All ${E(p.name)} articles</a>`:ext(LINKS.newsletter,'Subscribe');
+  S.innerHTML=`<div class="sheet"><small>Pillar ${i+1} of ${PILLARS.length}</small><h2>${E(p.name)}</h2><p class="big">${E(p.lead)}</p>${p.body.map(t=>`<p>${E(t)}</p>`).join('')}${reads}<div class="row">${more}<a class="btn ghost" href="#coaching">Work with Elvis</a><button id="closer">Close</button></div></div>`;
   S.hidden=false;$('closer').focus();$('closer').onclick=closeSheet;S.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeSheet))}
 function closeSheet(){$('sheet').hidden=true}
 $('sheet').addEventListener('click',e=>{if(e.target===$('sheet'))closeSheet()});
@@ -240,18 +275,31 @@ function showHome(){
   const dock=[['The Series','#series',C.gold,false],['Coaching','#coaching',C.purple,false],['Newsletter',LINKS.newsletter||'#series',C.indigo,!!LINKS.newsletter],['LinkedIn Group',LINKS.group,C.lav,true],['About Elvis','#about','232,195,90',false]];
   $('cap').innerHTML=`<small class="em" style="--i:1">NeuroTrading™ · Elvis Lester, MA, LMHC, The ChangeMaster™</small><b class="em" style="--i:3">Most traders don't lose to the market. They lose to their own brain.</b><div class="dock">${dock.map(([n,u,c,x],i)=>`<a class="dk em" href="${E(u)}"${x?' target="_blank" rel="noopener"':''} style="--i:${i+5};--c:${c}"><span class="orb"></span>${n}</a>`).join('')}</div>`;
   buildOrbit()}
-function showSeries(){
+function partCard(p,i){const tagO=p.url?'a':'div',tags=[PIL(p.pillar).name,...(p.sit||[]).map(SIT)].filter(Boolean).join(' · ');
+  return `<${tagO} class="part em${p.next?' next':''}" style="--i:${Math.min(i+2,9)}"${p.url?` href="${E(p.url)}" target="_blank" rel="noopener"`:''}><small>${E(p.tag)}</small><b>${E(p.title)}</b><span>${E(p.blurb)}</span><em>${p.next?'Coming soon':p.url?'Read on LinkedIn →':'In the NeuroTrading Newsletter'}</em>${tags?`<i>${E(tags)}</i>`:''}</${tagO}>`}
+function showSeries(f){
+  const pf=PILLARS.find(p=>p.id===f),sf=SITUATIONS.find(x=>x.id===f);
+  const list=PARTS.filter(p=>!f||(pf&&p.pillar===f)||(sf&&(p.sit||[]).includes(f)));
+  const KEEP=12,recent=list.length>KEEP?list.slice(-KEEP):list,older=list.length>KEEP?list.slice(0,list.length-KEEP):[];
+  const chip=(id,name)=>`<a class="chip${(f||'')===id?' on':''}" href="#series${id?'/'+id:''}">${E(name)}</a>`;
+  const usedSit=SITUATIONS.filter(x=>PARTS.some(p=>(p.sit||[]).includes(x.id)));
+  const toolLink=t=>{const a=PARTS.find(p=>p.tag===t.part);return a&&a.url?a.url:''};
+  let body;
+  if(!list.length)body=`<p class="empty">${pf?`<b style="color:var(--gold)">${E(pf.soon||'Coming soon')}.</b> `:''}Nothing published here yet. ${ext(LINKS.newsletter,'Subscribe to get it first')}</p>`;
+  else body=`<div class="parts">${recent.map(partCard).join('')}</div>${older.length?`<details class="older"><summary>Earlier parts (${older.length})</summary><div class="parts">${older.map(partCard).join('')}</div></details>`:''}`;
   $('page').innerHTML=`<div class="wrap page"><h1 class="em">The NeuroTrading™ <span class="g">Series</span></h1><p class="lead em" style="--i:1">You know your rules. You've read the books. And you still move the stop. Each part takes one piece of the problem, shows you the research behind it, and gives you something to try at your desk the next day.</p>
-  <div class="parts">${PARTS.map((p,i)=>{const tagO=p.url?'a':'div';return `<${tagO} class="part em${p.next?' next':''}" style="--i:${i+2}"${p.url?` href="${E(p.url)}" target="_blank" rel="noopener"`:''}><small>${E(p.tag)}</small><b>${E(p.title)}</b><span>${E(p.blurb)}</span><em>${p.next?'Coming soon':p.url?'Read on LinkedIn →':'In the NeuroTrading Newsletter'}</em></${tagO}>`}).join('')}</div>
+  <div class="chips em" style="--i:2"><span class="lbl">Pillars</span>${chip('','All')}${PILLARS.map(p=>chip(p.id,p.name)).join('')}</div>
+  <div class="chips em" style="--i:2"><span class="lbl">Situations</span>${usedSit.map(x=>chip(x.id,x.name)).join('')}</div>
+  ${body}
+  <h2 class="em" style="--i:8">Tools</h2><div class="tools">${TOOLS.map((t,i)=>{const u=toolLink(t);return u?`<a class="tool em" style="--i:${9+i}" href="${E(u)}" target="_blank" rel="noopener"><b>${E(t.name)}</b><span>${E(t.what)}</span><em>From ${E(t.part)} →</em></a>`:`<div class="tool em" style="--i:${9+i}"><b>${E(t.name)}</b><span>${E(t.what)}</span><em>${t.soon?'Coming soon':'From '+E(t.part)}</em></div>`}).join('')}</div>
   <div class="cta em" style="--i:10"><h2>Get every part as it comes out</h2><p>New parts go out once a week in the NeuroTrading Newsletter on LinkedIn, along with bonus pieces and answers to readers' questions.</p>${ext(LINKS.newsletter,'Subscribe on LinkedIn')} &nbsp; ${ext(LINKS.group,'Join the LinkedIn group')}</div></div>`}
 function showCoaching(){
   $('page').innerHTML=`<div class="wrap page"><h1 class="em">Work with Elvis, <span class="g">one to one</span></h1><p class="lead em" style="--i:1">For traders who know their rules and still break them. I work with a small number of traders at a time, on the state, the loops and the decisions underneath the trade.</p>
-  <h2 class="em" style="--i:2">What we work on</h2><div class="cols">${PILLARS.slice(0,3).map((p,i)=>`<div class="box em" style="--i:${i+3}"><h3>${E(p.name)}</h3><p>${E(p.lead)}</p></div>`).join('')}</div>
-  <div class="box em" style="--i:6;margin-top:18px"><h3>${E(PILLARS[3].name)}</h3><p>${E(PILLARS[3].lead)} ${E(PILLARS[3].body[0])}</p></div>
+  <h2 class="em" style="--i:2">What we work on</h2><div class="cols5">${PILLARS.map((p,i)=>`<div class="box em" style="--i:${i+3}"><h3>${E(p.name)}</h3><p>${E(p.lead)}</p></div>`).join('')}</div>
   <h2 class="em" style="--i:7">How it works</h2><ol class="steps">
   <li class="em" style="--i:8"><div><b>A discovery call</b><span>Twenty minutes to talk through what's costing you money and whether this is the right fit.</span></div></li>
   <li class="em" style="--i:9"><div><b>A baseline</b><span>Before we change anything, we measure: rule breaks, stops honored versus moved, trades per day, and your state before each entry.</span></div></li>
-  <li class="em" style="--i:10"><div><b>The work</b><span>Weekly one-to-one sessions on the four pillars, using NLP, clinical hypnosis and Neurocise®, with tools you run at your desk between sessions.</span></div></li>
+  <li class="em" style="--i:10"><div><b>The work</b><span>Weekly one-to-one sessions on the five pillars, using NLP, clinical hypnosis and Neurocise®, with tools you run at your desk between sessions.</span></div></li>
   <li class="em" style="--i:11"><div><b>The proof</b><span>We compare your numbers before and after. If they don't move, we change the approach.</span></div></li></ol>
   <div class="cta em" style="--i:12"><h2>Recognize yourself?</h2><p>Call or text me, or message me the word <b style="color:var(--gold)">NeuroTrading</b> on LinkedIn, and we'll set up a call.</p>${LINKS.book?ext(LINKS.book,'Book a discovery call'):'<a class="btn" href="tel:+18132215466">Call or text Elvis: 813-221-5466</a>'} &nbsp; ${ext(LINKS.linkedin,'Message me on LinkedIn')}<p class="note">NeuroTrading™ coaching is performance coaching, not psychotherapy, and never advice on what to buy or sell.</p></div>
   <h2 class="em" style="--i:13">For clinicians and coaches</h2><div class="box em" style="--i:14"><p>Some of your clients trade, and some of what they bring you starts at the trading desk. I also train clinicians and coaches in the NeuroTrading™ approach. Message me on LinkedIn to ask about training.</p></div></div>`}
@@ -263,12 +311,13 @@ function showAbout(){
   <p>NeuroTrading™ brings that work to the trading desk: the gap between what traders know and what they actually do under pressure.</p>
   <ul class="creds"><li>Licensed Mental Health Counselor (FL)</li><li>Qualified Teacher of Hypnosis</li><li>Qualified Supervisor (FL)</li><li>Advanced Master Trainer</li><li>Licensed NLP Change Master™</li></ul>
   <div class="links"><a href="${E(LINKS.studios)}" target="_blank" rel="noopener">Explore the Elvis Lester Universe</a><a href="${E(LINKS.substack)}" target="_blank" rel="noopener">Substack</a><a href="${E(LINKS.group)}" target="_blank" rel="noopener">NeuroTrading LinkedIn group</a></div></div></div></div>`}
-function route(){const h=location.hash.slice(1)||'home',v=['home','series','coaching','about'].includes(h)?h:'home';closeSheet();
+function route(){const [h0,f]=(location.hash.slice(1)||'home').split('/'),v=['home','series','coaching','about'].includes(h0)?h0:'home';closeSheet();
   document.body.classList.toggle('home',v==='home');document.querySelectorAll('nav.main a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
-  if(v==='home')showHome();else{$('field').textContent='';({series:showSeries,coaching:showCoaching,about:showAbout})[v]()}
-  sizeSparks();sp.list=[];sp.next=performance.now()+600;scrollTo(0,0)}
+  if(v==='home')showHome();else{$('field').textContent='';({series:()=>showSeries(f),coaching:showCoaching,about:showAbout})[v]()}
+  padTop();sizeSparks();sp.list=[];sp.next=performance.now()+600;scrollTo(0,0)}
+function padTop(){$('page').style.paddingTop=(document.querySelector('header').getBoundingClientRect().bottom+24)+'px'}
 addEventListener('hashchange',route);
-let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{sizeSparks();if(document.body.classList.contains('home'))sizeOrbit()},200)});
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{padTop();sizeSparks();if(document.body.classList.contains('home'))sizeOrbit()},200)});
 route();requestAnimationFrame(tick);
 </script>
 </body>
