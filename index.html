@@ -57,6 +57,7 @@ h1,.brand,.caption b,.sheet h2,.page h2{text-shadow:0 0 9px rgba(200,175,255,.28
 .sun svg{display:block;width:100%;height:auto;filter:drop-shadow(0 0 18px rgba(212,175,55,.25))}
 .pillar{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;width:100%;aspect-ratio:1.25;border-radius:18px;padding:14px;text-align:center;
  background:linear-gradient(160deg,rgba(30,26,60,.92),rgba(12,10,26,.92));border:1px solid rgba(232,195,90,.45);box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 22px rgba(99,102,241,.18)}
+.pillar .dot{width:10px;height:10px;border-radius:50%;background:var(--goldfill);box-shadow:0 0 10px rgba(232,195,90,.7)}
 .pillar .num{width:34px;height:34px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-family:var(--display);font-weight:700;font-size:15px}
 .pillar b{font-family:var(--display);font-weight:700;font-size:clamp(14px,1.35vw,18px);line-height:1.2;color:#fff}
 .pillar span{font-size:12px;color:var(--dim)}
@@ -69,7 +70,7 @@ h1,.brand,.caption b,.sheet h2,.page h2{text-shadow:0 0 9px rgba(200,175,255,.28
 .orb{display:block;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 36% 30%,#fff,rgb(var(--c)) 42%,rgba(var(--c),.34) 78%);box-shadow:0 0 10px rgba(var(--c),.42);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
 .dk:hover,.dk:focus-visible{color:var(--ink)}
 .dk:hover .orb,.dk:focus-visible .orb{transform:translateY(-5px) scale(1.42);box-shadow:0 0 16px rgba(var(--c),.95),0 0 38px 8px rgba(var(--c),.5)}
-@media(max-width:640px){.pillar{gap:4px;padding:8px 6px;border-radius:13px}.pillar .num{width:22px;height:22px;font-size:11px;border-width:1.5px}.pillar b{font-size:12px}.pillar span{font-size:10px;line-height:1.25}.dock{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 6px}.dk{width:auto;font-size:13px;gap:5px}.orb{width:22px;height:22px}.tagline{margin-left:0}}
+@media(max-width:640px){.pillar{gap:4px;padding:8px 6px;border-radius:13px}.pillar .dot{width:8px;height:8px}.pillar b{font-size:12px}.pillar span{font-size:10px;line-height:1.25}.dock{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 6px}.dk{width:auto;font-size:13px;gap:5px}.orb{width:22px;height:22px}.tagline{margin-left:0}}
 .em{animation:emerge 1s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*90ms + .2s)}
 @keyframes emerge{from{opacity:0;transform:scale(.9);filter:blur(9px)}}
 
@@ -246,9 +247,9 @@ function buildOrbit(){const F=$('field');F.textContent='';orbit.cards=[];
   const sun=document.createElement('a');sun.className='fc sun';sun.href='#series';sun.setAttribute('aria-label','NeuroTrading: read the series');sun.innerHTML=mark();F.append(sun);
   orbit.sun={el:sun,born:performance.now()};
   PILLARS.forEach((p,i)=>{const el=document.createElement('button');el.className='fc';el.setAttribute('aria-label',p.name);
-    el.innerHTML=`<span class="pillar"><span class="num">${i+1}</span><b>${E(p.name)}</b><span>${E(p.short)}</span></span>`;
+    el.innerHTML=`<span class="pillar"><span class="dot"></span><b>${E(p.name)}</b><span>${E(p.short)}</span></span>`;
     el.onclick=()=>openSheet(i);F.append(el);
-    const c={el,base:i/PILLARS.length*6.2832+.35,off:0,hover:0,born:performance.now()+(REDUCED?0:300+i*140)};
+    const c={el,base:Math.PI+.45+i/PILLARS.length*6.2832,off:0,hover:0,born:performance.now()+(REDUCED?0:300+i*140)};
     el.onpointerenter=()=>c.over=true;el.onpointerleave=()=>c.over=false;el.onfocus=()=>c.over=true;el.onblur=()=>c.over=false;
     orbit.cards.push(c)});
   sizeOrbit()}
@@ -262,7 +263,7 @@ function tickOrbit(now,dt){const B=orbit.box;if(!B)return;orbit.t+=dt;const spee
   s.el.style.opacity=se;s.el.style.zIndex=60;s.el.style.transform=`translate(${(cx-sw/2).toFixed(1)}px,${(cy-sw/2).toFixed(1)}px) scale(${ss.toFixed(3)})`;
   orbit.cards.forEach(c=>{c.hover+=((c.over?1:0)-c.hover)*Math.min(1,dt*4);if(c.over)c.off-=speed*dt;else if(c.off){c.off=Math.atan2(Math.sin(c.off),Math.cos(c.off));const st=.1*dt;c.off=Math.abs(c.off)<=st?0:c.off-Math.sign(c.off)*st}
     const th=c.base+orbit.rot+c.off,z=Math.cos(th),front=(z+1)/2,e=ease(front),en=ease(Math.min(1,Math.max(0,(now-c.born)/1200)));
-    const sc=((B.narrow?.92:S0+(S1-S0)*e)+.14*c.hover)*(.8+.2*en),x=cx+Math.sin(th)*RX,y=cy+z*RY,o=((B.narrow?1:.62+.38*e)*(anyOver&&!c.over?.7:1)+c.hover*.3)*en;
+    const sc=((B.narrow?.92:S0+(S1-S0)*e)+.14*c.hover)*(.8+.2*en),x=cx-Math.sin(th)*RX,y=cy+z*RY,o=((B.narrow?1:.62+.38*e)*(anyOver&&!c.over?.7:1)+c.hover*.3)*en;
     c.el.style.opacity=Math.min(1,o).toFixed(3);c.el.style.zIndex=c.over?300:(z>-.1?100+Math.round(e*100):10+Math.round(e*40));
     c.el.style.transform=`translate(${(x-B.cw/2).toFixed(1)}px,${(y-B.ch/2).toFixed(1)}px) scale(${sc.toFixed(3)})`})}
 let last=0;function tick(now){requestAnimationFrame(tick);const dt=Math.min(.05,(now-(last||now))/1000);last=now;if(document.body.classList.contains('home'))tickOrbit(now,dt);drawSparks(now)}
@@ -272,7 +273,7 @@ function openSheet(i){const p=PILLARS[i],S=$('sheet');
   const mine=PARTS.filter(a=>a.pillar===p.id&&(a.url||a.next)).reverse().slice(0,3);
   const reads=mine.length?`<ul class="reads">${mine.map(a=>a.url?`<li><a href="${E(a.url)}" target="_blank" rel="noopener"><small>${E(a.tag)}</small>${E(a.title)} →</a></li>`:`<li><span><small>${E(a.tag)}</small>${E(a.title)}</span></li>`).join('')}</ul>`:`<p><b style="color:var(--gold)">${E(p.soon||'Coming soon')}.</b> Subscribe to the newsletter to get it when it's out.</p>`;
   const more=PARTS.some(a=>a.pillar===p.id)?`<a class="btn" href="#series/${p.id}">All ${E(p.name)} articles</a>`:ext(LINKS.newsletter,'Subscribe');
-  S.innerHTML=`<div class="sheet"><small>Pillar ${i+1} of ${PILLARS.length}</small><h2>${E(p.name)}</h2><p class="big">${E(p.lead)}</p>${p.body.map(t=>`<p>${E(t)}</p>`).join('')}${reads}<div class="row">${more}<a class="btn ghost" href="#coaching">Work with Elvis</a><button id="closer">Close</button></div></div>`;
+  S.innerHTML=`<div class="sheet"><small>One of five pillars</small><h2>${E(p.name)}</h2><p class="big">${E(p.lead)}</p>${p.body.map(t=>`<p>${E(t)}</p>`).join('')}${reads}<div class="row">${more}<a class="btn ghost" href="#coaching">Work with Elvis</a><button id="closer">Close</button></div></div>`;
   S.hidden=false;$('closer').focus();$('closer').onclick=closeSheet;S.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeSheet))}
 function closeSheet(){$('sheet').hidden=true}
 $('sheet').addEventListener('click',e=>{if(e.target===$('sheet'))closeSheet()});
